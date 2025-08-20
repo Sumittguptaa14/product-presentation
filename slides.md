@@ -1,127 +1,157 @@
-marp: true theme: nexus-theme paginate: true header: 'NexusDB API: Technical Overview' footer: '© 2025 Innovate Solutions | Contact: 23f2004258@ds.study.iitm.ac.in'
-<!--
-theme: nexus-theme
-class:
+---
+marp: true
+theme: github-theme
+paginate: true
+header: 'Mastering GitHub Actions'
+footer: '© 2025 Innovate Solutions | 23f2004258@ds.study.iitm.ac.in'
+---
 
-title-slide
+<!--
+theme: github-theme
+class:
+  - title-slide
 -->
 
 <style>
-/* Define the custom theme 'nexus-theme' /
-:root {
---color-background: #1d2a35;
---color-foreground: #e0e0e0;
---color-primary: #00e676; / A vibrant green for highlights /
---color-secondary: #ffc107; / Amber for secondary text */
---font-family-sans-serif: 'Roboto', 'Arial', sans-serif;
---font-family-monospace: 'Fira Code', 'Courier New', monospace;
-}
+  /* Define the custom 'github-theme' */
+  :root {
+    --color-background: #0d1117; /* GitHub Dark Background */
+    --color-foreground: #c9d1d9; /* GitHub Dark Foreground */
+    --color-primary: #58a6ff;   /* GitHub Blue */
+    --color-secondary: #a5d6ff; /* Lighter Blue */
+    --font-family-sans-serif: 'Segoe UI', 'Roboto', 'Helvetica', sans-serif;
+    --font-family-monospace: 'SFMono-Regular', 'Consolas', 'Liberation Mono', monospace;
+  }
 
-section {
-background-color: var(--color-background);
-color: var(--color-foreground);
-font-family: var(--font-family-sans-serif);
-padding: 70px;
-}
+  section {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-family-sans-serif);
+    padding: 70px;
+  }
 
-h1, h2, h3 {
-color: var(--color-primary);
-font-family: var(--font-family-sans-serif);
-font-weight: 300; /* Lighter font weight for a modern look */
-}
+  h1, h2, h3 {
+    color: var(--color-primary);
+    font-family: var(--font-family-sans-serif);
+    font-weight: 400;
+    border: none;
+  }
+  
+  h1 {
+    font-size: 3.2em;
+    text-align: left;
+  }
 
-h1 {
-font-size: 3.2em;
-text-align: left;
-}
+  h2 {
+    font-size: 2.4em;
+    border-bottom: 1px solid #30363d; /* GitHub Divider Color */
+    padding-bottom: 12px;
+    text-align: left;
+  }
 
-h2 {
-font-size: 2.2em;
-border-bottom: 2px solid var(--color-primary);
-padding-bottom: 10px;
-text-align: left;
-}
+  /* Custom styling for the title slide */
+  section.title-slide {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+  }
+  
+  section.title-slide h1 {
+    font-size: 4.2em;
+  }
+  
+  section.title-slide p {
+    color: var(--color-secondary);
+    font-size: 1.4em;
+  }
 
-/* Custom styling for the title slide */
-section.title-slide {
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: flex-start;
-text-align: left;
-}
+  code {
+    font-family: var(--font-family-monospace);
+    background-color: #161b22;
+    padding: 3px 6px;
+    border-radius: 6px;
+    font-size: 0.95em;
+  }
 
-section.title-slide h1 {
-font-size: 4em;
-}
-
-section.title-slide p {
-color: var(--color-secondary);
-font-size: 1.3em;
-}
-
-code {
-font-family: var(--font-family-monospace);
-background-color: #263238;
-padding: 2px 5px;
-border-radius: 4px;
-font-size: 0.9em;
-}
+  pre code {
+    display: block;
+    padding: 20px;
+    line-height: 1.5;
+  }
 </style>
 
-NexusDB API
-<p>The Future of Data Synchronization</p>
+# **GitHub Actions**
+<p>Automate Your Development Workflow</p>
 <br>
-<p><strong>Lead Developer:</strong> Alex Ray</p>
+<p><strong>Presenter:</strong> Alex Ray</p>
 <p><strong>Contact:</strong> 23f2004258@ds.study.iitm.ac.in</p>
 
-Architecture Overview
-NexusDB provides a decentralized, real-time database solution designed for modern applications.
+---
 
-Distributed Ledger: Ensures data integrity and fault tolerance.
+## **What are GitHub Actions?**
 
-GraphQL Endpoint: Offers flexible and efficient data querying.
+GitHub Actions is a **CI/CD** (Continuous Integration & Continuous Delivery) platform that allows you to automate your build, test, and deployment pipeline.
 
-SDKs Available: Native support for JavaScript, Python, and Go.
+- **Event-Driven:** Trigger workflows on events like `push` or `pull_request`.
+- **Integrated:** Lives right inside your GitHub repository.
+- **Community-Powered:** Leverage thousands of actions from the marketplace.
+
+---
 
 <!--
 _class:
-
-invert
+  - invert
 -->
 
-Key Concepts
-Nodes: Independent servers that hold a copy of the database.
+![bg right:50%](https://placehold.co/800x600/0d1117/58a6ff?text=Core+Components)
 
-Channels: Secure communication pathways for data sync.
+## **Core Components**
 
-Queries: Use GraphQL to fetch exactly the data you need.
+* **Workflow:** An automated process defined in a YAML file.
+* **Job:** A set of steps that execute on a runner.
+* **Step:** An individual task that can run commands or an action.
+* **Action:** A reusable piece of code that performs a complex task.
+* **Runner:** A server that runs your workflows.
 
-Mutations: The method for creating, updating, or deleting data.
+---
 
-Performance Metrics
-The latency for data propagation across the network is a critical factor. We can model the average time T for a transaction to reach k nodes.
+## **Example Workflow**
 
-The formula is given by:
+Here is a basic workflow that runs tests on every push to the `main` branch. This file would be located at `.github/workflows/ci.yml`.
 
-$$ T(k) = \alpha \log_2(k) + \delta $$
+```yaml
+name: Node.js CI
 
-Where:
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
-alpha is the network transmission coefficient.
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20.x'
+    - run: npm ci
+    - run: npm test
+```
 
-delta is the average processing delay per node.
+---
 
-This logarithmic growth ensures the system remains fast at scale.
+## **Get Started**
 
-Get Started
-Ready to build?
+Ready to automate?
 
-npm install @nexusdb/client
+1.  Create a `.github/workflows` directory in your repository.
+2.  Add a new `.yml` file (e.g., `main.yml`).
+3.  Define your first workflow and push it to GitHub.
 
-Review the full documentation at docs.innovate.dev.
-
-Join our community on Discord for support.
-
-Questions?
-Email: 23f2004258@ds.study.iitm.ac.in
+**Questions?**
+**Email:** 23f2004258@ds.study.iitm.ac.in
