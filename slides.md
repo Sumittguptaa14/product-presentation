@@ -85,7 +85,7 @@ class:
 # **GitHub Actions**
 <p>Automate Your Development Workflow</p>
 <br>
-<p><strong>Presenter:</strong> Alex Ray</p>
+<p><strong>Presenter:</strong> Sumit </p>
 <p><strong>Contact:</strong> 23f2004258@ds.study.iitm.ac.in</p>
 
 ---
