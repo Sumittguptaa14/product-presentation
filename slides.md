@@ -85,7 +85,7 @@ class:
 # **GitHub Actions**
 <p>Automate Your Development Workflow</p>
 <br>
-<p><strong>Presenter:</strong> Sumit </p>
+<p><strong>Presenter:</strong> Sumit</p>
 <p><strong>Contact:</strong> 23f2004258@ds.study.iitm.ac.in</p>
 
 ---
@@ -142,6 +142,20 @@ jobs:
     - run: npm ci
     - run: npm test
 ```
+
+---
+
+## **Workflow Performance**
+
+The total execution time for a workflow can be estimated. Understanding this helps in optimizing your CI/CD pipeline for faster feedback.
+
+The total time `T` is a sum of the setup time and the individual job times:
+
+$$ T_{total} = T_{setup} + \sum_{i=1}^{n} T_{job_i} $$
+
+Where:
+- **$T_{setup}$** is the initial runner setup time.
+- **$T_{job_i}$** is the execution time for an individual job `i`.
 
 ---
 
